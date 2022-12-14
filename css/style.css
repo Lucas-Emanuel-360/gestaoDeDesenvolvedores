@@ -1,0 +1,53 @@
+body, input{
+    color: #3f3f3f;
+    background-color: snow;
+    font-size: 130%;
+    font-family: 'Roboto', sans-serif;
+}
+h1, h2, h3, h4, h5, h6{
+    text-align: center;
+}
+header{
+    padding: 20px;
+}
+input{
+    transition-duration: 0.3s;
+}
+input:hover{
+    transition-duration: 0.3s;
+    background-color: #d0d0d0;
+}
+a{
+    color: #3f3f3f;
+    text-decoration: none;
+    transition-duration: 0.3s;
+}
+a:hover{
+    color: #000000;
+    text-decoration: underline dotted;
+    transition-duration: 0.3s;
+}
+tr.ativo{
+    font-weight:bold;
+}
+td.ativo{
+    color:#00590a;
+}
+tr.inativo{
+    background-color:#e0e0e0;
+    color:#4d4d4d;
+}
+td.inativo{
+    color:#590000;
+}
+.cred{
+    position: fixed;
+    bottom: 5px;
+    font-size: 10pt;
+    transition-duration: 1s;
+}
+.cred:hover{
+    color: #000000;
+    font-size: 11pt;
+    transition-duration: 0.5s;
+}
