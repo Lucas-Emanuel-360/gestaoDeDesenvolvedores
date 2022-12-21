@@ -40,14 +40,6 @@ tr.inativo{
 td.inativo{
     color:#590000;
 }
-.cred{
-    position: fixed;
-    bottom: 5px;
-    font-size: 10pt;
-    transition-duration: 1s;
-}
-.cred:hover{
-    color: #000000;
-    font-size: 11pt;
-    transition-duration: 0.5s;
+#idForm:hover{
+    cursor: not-allowed;
 }

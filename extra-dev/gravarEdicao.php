@@ -24,7 +24,7 @@ $conn = R::setup( 'mysql:host=localhost;dbname=sistema_gestao', 'root', 'aluno')
 
 if(isset($_GET['id'])){
     $id = $_GET['id'];
-    $dev = R::load('dev', $id);//CARREGA O PRODUTO DE TAL ID
+    $dev = R::load('dev', $id);//CARREGA O DEV DE TAL ID
 
     if(isset($_GET['newEmail']) && isset($_GET['newSenha']) && isset($_GET['newNome']) && isset($_GET['newNascimento']) && isset($_GET['newNivel'])){//DADOS
         $email = $_GET['newEmail'];
@@ -72,7 +72,6 @@ if(isset($_GET['id'])){
         }
 
         echo "<h3 style='color:green;text-align:center;'>Alterações salvas com sucesso!</h3>";
-        echo "<div style='text-align:center;'><a href='editar.php?id=$dev->id'><i title='Editar' class='fa-solid fa-pen-to-square'></i></a></div><br>";
     }
 ?>
 <table border='1' cellpadding='10' cellspacing='0' style='text-align:center;margin: 0px auto;'>
@@ -84,6 +83,7 @@ if(isset($_GET['id'])){
         <td>Nome</td>
         <td>Nascimento</td>
         <td>Nível</td>
+        <td>Editar</td>
     </tr>       
     <tr class='<?= $style ?>'>
         <td><?= $dev['email'] ?></td>
@@ -93,6 +93,7 @@ if(isset($_GET['id'])){
         <td><?= $dev['nome'] ?></td>
         <td><?= $dev['nascimento'] ?></td>
         <td><?= $dev['nivel'] ?></td>
+        <td><a href='extra-dev/editar.php?id=<?= $dev['id'] ?>'><i title='Editar' class='fa-solid fa-pen-to-square'></i></a></td>
     </tr>    
 </table>
 

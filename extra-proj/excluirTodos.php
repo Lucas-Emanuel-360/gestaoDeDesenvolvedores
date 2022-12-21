@@ -20,17 +20,16 @@ $conn = R::setup( 'mysql:host=localhost;dbname=sistema_gestao', 'root', 'aluno')
 <?php
         if(isset($_GET['decisao'])){
             if($_GET['decisao'] == 'sim'){
-                R::exec('DROP DATABASE sistema_gestao;');
-                R::exec('CREATE DATABASE sistema_gestao;');
+                R::exec('DROP TABLE proj;');
                 echo "<h3 style='color:green;text-align:center;'>Dados excluídos com sucesso!</h3>";
-                echo "<table style='margin: auto;'><td><ul class='fa-ul'><li><span class='fa-li'><a href='../listagem.php'><i class='fa-solid fa-rotate-left'></i></span>Voltar</a></li></ul></td></table>";
+                echo "<table style='margin: auto;'><td><ul class='fa-ul'><li><span class='fa-li'><a href='../listagem-proj.php'><i class='fa-solid fa-rotate-left'></i></span>Voltar</a></li></ul></td></table>";
             } else if($_GET['decisao'] == 'nao'){
                 echo "<h3 style='color:darkred;text-align:center;'>Dados não excluídos!</h3>";
-                echo "<table style='margin: auto;'><td><ul class='fa-ul'><li><span class='fa-li'><a href='../listagem.php'><i class='fa-solid fa-rotate-left'></i></span>Voltar</a></li></ul></td></table>";
+                echo "<table style='margin: auto;'><td><ul class='fa-ul'><li><span class='fa-li'><a href='../listagem-proj.php'><i class='fa-solid fa-rotate-left'></i></span>Voltar</a></li></ul></td></table>";
             }
         } else{
 $form = <<< CONFIRMACAO
-<h3 style='text-align:center;'>Excluir todos os Dados cadastrados <span style='color:black;-webkit-text-stroke: 1px darkred;'>permanentemente</span>?</h3>
+<h3 style='text-align:center;'>Excluir todos os dados cadastrados <span style='color:black;-webkit-text-stroke: 1px darkred;'>permanentemente</span>?</h3>
 <form action='excluirTodos.php' method='get' style='text-align:center;'>
     <table style='margin: auto;'>
         <tr>

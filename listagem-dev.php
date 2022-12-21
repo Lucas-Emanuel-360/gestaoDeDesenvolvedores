@@ -35,29 +35,30 @@ $conn = R::setup( 'mysql:host=localhost;dbname=sistema_gestao', 'root', 'aluno')
 <?php
    
 
-    if(R::find('dev')){echo "<p style='font-size:20pt;text-align:center;'><a href='extra/excluirTodos.php'><i title='Excluir todos permanentemente' style='color:darkred;' class='fa-solid fa-trash-can'></i></a></p>";}
-    else{echo "<h3>Nenhum dado credenciado.</h3>";}
+   if(R::find('dev') && R::find('cred') ){echo "<p style='font-size:20pt;text-align:center;'><a href='extra-dev/excluirTodos.php'><i title='Excluir todos permanentemente' style='color:darkred;' class='fa-solid fa-trash-can'></i></a></p>";}
+   else{echo "<h3>Nenhum desenvolvedor adicionado.</h3>";}
 
+    foreach (R::findAll('cred') as $cred)
     foreach (R::findAll('dev') as $dev) {//ITERAÇÃO
-    if($dev->atividade == 'Ativo'){//MUDAR COR A DEPENDER DA ATIVIDADE
+    if($cred->atividade == 'Ativo'){//MUDAR COR A DEPENDER DA ATIVIDADE
         $style = 'ativo';
-    } else if($dev->atividade == 'Inativo'){//MUDAR COR A DEPENDER DA ATIVIDADE
+    } else if($cred->atividade == 'Inativo'){//MUDAR COR A DEPENDER DA ATIVIDADE
         $style = 'inativo';
     } else {
         echo "<p style='color:red;text-align:center;'>Ocorreu um erro. Por favor <a href='listagem.php' style='color:darkred;'>volte</a> e tente de novo.</p>";
     }
 ?>
     <tr class='<?= $style ?>'>
-        <td><?= $dev['email'] ?></td>
-        <td><?= $dev['senha'] ?></td>
-        <td class='<?= $style ?>'><?= $dev['atividade'] ?></td>
-        <td><?= $dev['adm'] ?></td>
+        <td><?= $cred['email'] ?></td>
+        <td><?= $cred['senha'] ?></td>
+        <td class='<?= $style ?>'><?= $cred['atividade'] ?></td>
+        <td><?= $cred['adm'] ?></td>
         <td><?= $dev['nome'] ?></td>
         <td><?= $dev['nascimento'] ?></td>
         <td><?= $dev['nivel'] ?></td>
-        <td><a href='extra/detalhamento.php?id=<?= $dev['id'] ?>'><i title='Ver detalhes' class="fa-solid fa-magnifying-glass"></i></a></td>
-        <td><a href='extra/editar.php?id=<?= $dev['id'] ?>'><i title='Editar' class="fa-solid fa-pen-to-square"></i></a></td>
-        <td><a href='extra/excluir.php?id=<?= $dev['id'] ?>'><i title='Excluir permanentemente' style='color:darkred;' class="fa-solid fa-trash-can"></i></a></td>
+        <td><a href='extra-dev/detalhamento.php?id=<?= $dev['id'] ?>'><i title='Ver detalhes' class="fa-solid fa-magnifying-glass"></i></a></td>
+        <td><a href='extra-dev/editar.php?id=<?= $dev['id'] ?>'><i title='Editar' class="fa-solid fa-pen-to-square"></i></a></td>
+        <td><a href='extra-dev/excluir.php?id=<?= $dev['id'] ?>'><i title='Excluir permanentemente' style='color:darkred;' class="fa-solid fa-trash-can"></i></a></td>
     </tr>
 <?php
     }

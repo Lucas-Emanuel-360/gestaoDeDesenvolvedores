@@ -1,3 +1,10 @@
+<?php
+    require_once '../class/rb-mysql.php';
+$conn = R::setup( 'mysql:host=localhost;dbname=sistema_gestao', 'root', 'aluno');
+   
+    R::close();
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -9,14 +16,9 @@
     <title>Gestão de desenvolvedores e respectivas tarefas em projetos</title>
 </head>
 <body>
-<header><h1 style='text-align:center;'><i class="fa-solid fa-trash-can"></i></h1></header>
+<header><p style="text-align: center;opacity:75%;font-size:10pt;">&copy; Clara Ribeiro e Lucas Emanuel ~ 2022</p><h1 style='text-align:center;'><i class="fa-solid fa-trash-can"></i></h1></header>
 <?php
-    require_once '../class/rb-mysql.php';
-    $conn = R::setup( 'mysql:host=localhost;dbname=sistema_gestao', 'root' );
-    if ($conn){echo '';}
-    else {echo "<h3 style='color:red;'>Conexão falha!</h3>";}
-    
-    require_once '../template/footer2.php';
+   
 
     if (isset($_GET['id'])) {//ID
         $id = $_GET['id'];
@@ -24,16 +26,16 @@
         if(isset($_POST['decisao'])){
             if($_POST['decisao'] == 'sim'){
                 R::trash($devAExcluir);
-                echo "<h3 style='color:green;text-align:center;'>dev excluído com sucesso!</h3>";
+                echo "<h3 style='color:green;text-align:center;'>Dev excluído com sucesso!</h3>";
                 echo "<table style='margin: auto;'><td><ul class='fa-ul'><li><span class='fa-li'><a href='../listagem.php'><i class='fa-solid fa-rotate-left'></i></span>Voltar</a></li></ul></td></table>";
             } else if($_POST['decisao'] == 'nao'){
-                echo "<h3 style='color:darkred;text-align:center;'>dev não excluído!</h3>";
+                echo "<h3 style='color:darkred;text-align:center;'>Dev não excluído!</h3>";
                 echo "<table style='margin: auto;'><td><ul class='fa-ul'><li><span class='fa-li'><a href='../listagem.php'><i class='fa-solid fa-rotate-left'></i></span>Voltar</a></li></ul></td></table>";
             }
         } else{
 ?>
-<h3 style='text-align:center;'>Excluir '<?=$devAExcluir->email?>' <span style='color:black;-webkit-text-stroke: 1px darkred;'>permanentemente</span>?</h3>
-<form action='excluir.php?id={<?=$id?>}' method='post' style='text-align:center;'>
+<h3 style='text-align:center;'>Excluir '<?=$devAExcluir->nome?>' <span style='color:black;-webkit-text-stroke: 1px darkred;'>permanentemente</span>?</h3>
+<form action='excluir.php?id=<?=$id?>' method='post' style='text-align:center;'>
     <table style='margin: auto;'>
         <tr>
             <td>
@@ -54,6 +56,7 @@
         
 
         R::close();
+        require_once '../template/menu2.php';
     }
 
 

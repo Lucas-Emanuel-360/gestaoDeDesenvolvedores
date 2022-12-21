@@ -21,7 +21,7 @@ $conn = R::setup( 'mysql:host=localhost;dbname=sistema_gestao', 'root', 'aluno')
 <?php
 
     if (isset($_GET['id'])) {//ID
-        $dev = R::load('dev', $_GET['id']);//CARREGA O PRODUTO DE TAL ID
+        $dev = R::load('dev', $_GET['id']);//CARREGA O DEV DE TAL ID
         if($dev->atividade == 'Ativo'){//MUDAR COR A DEPENDER DA ATIVIDADE
             $style = 'ativo';
         } else if($dev->atividade == 'Inativo'){//MUDAR COR A DEPENDER DA ATIVIDADE
