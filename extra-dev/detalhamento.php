@@ -21,10 +21,11 @@ $conn = R::setup( 'mysql:host=localhost;dbname=sistema_gestao', 'root', 'aluno')
 <?php
 
     if (isset($_GET['id'])) {//ID
-        $dev = R::load('dev', $_GET['id']);//CARREGA O DEV DE TAL ID
-        if($dev->atividade == 'Ativo'){//MUDAR COR A DEPENDER DA ATIVIDADE
+        $dev = R::load('dev', $_GET['id']);
+        $cred = R::load('cred', $_GET['id']);//CARREGA O DEV DE TAL ID
+        if($cred->atividade == 'Ativo'){//MUDAR COR A DEPENDER DA ATIVIDADE
             $style = 'ativo';
-        } else if($dev->atividade == 'Inativo'){//MUDAR COR A DEPENDER DA ATIVIDADE
+        } else if($cred->atividade == 'Inativo'){//MUDAR COR A DEPENDER DA ATIVIDADE
             $style = 'inativo';
         } else {
             echo "<p style='color:red;text-align:center;'>Ocorreu um erro. Por favor <a href='listagem.php' style='color:darkred;'>volte</a> e tente de novo.</p>";
@@ -44,10 +45,10 @@ $conn = R::setup( 'mysql:host=localhost;dbname=sistema_gestao', 'root', 'aluno')
         <td>Nível</td>
     </tr>       
     <tr class='<?= $style ?>'>
-        <td><?= $dev['email'] ?></td>
-        <td><?= $dev['senha'] ?></td>
-        <td class='<?= $style ?>'><?= $dev['atividade'] ?></td>
-        <td><?= $dev['adm'] ?></td>
+        <td><?= $cred['email'] ?></td>
+        <td><?= $cred['senha'] ?></td>
+        <td class='<?= $style ?>'><?= $cred['atividade'] ?></td>
+        <td><?= $cred['adm'] ?></td>
         <td><?= $dev['nome'] ?></td>
         <td><?= $dev['nascimento'] ?></td>
         <td><?= $dev['nivel'] ?></td>

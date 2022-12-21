@@ -56,9 +56,9 @@ $conn = R::setup( 'mysql:host=localhost;dbname=sistema_gestao', 'root', 'aluno')
         <td><?= $dev['nome'] ?></td>
         <td><?= $dev['nascimento'] ?></td>
         <td><?= $dev['nivel'] ?></td>
-        <td><a href='extra-dev/detalhamento.php?id=<?= $dev['id'] ?>'><i title='Ver detalhes' class="fa-solid fa-magnifying-glass"></i></a></td>
-        <td><a href='extra-dev/editar.php?id=<?= $dev['id'] ?>'><i title='Editar' class="fa-solid fa-pen-to-square"></i></a></td>
-        <td><a href='extra-dev/excluir.php?id=<?= $dev['id'] ?>'><i title='Excluir permanentemente' style='color:darkred;' class="fa-solid fa-trash-can"></i></a></td>
+        <td><a href='extra-dev/detalhamento.php?id=<?= $dev['id'] && $cred['id'] ?>'><i title='Ver detalhes' class="fa-solid fa-magnifying-glass"></i></a></td>
+        <td><a href='extra-dev/editar.php?id=<?= $dev['id'] && $cred['id']  ?>'><i title='Editar' class="fa-solid fa-pen-to-square"></i></a></td>
+        <td><a href='extra-dev/excluir.php?id=<?= $dev['id'] && $cred['id'] ?>'><i title='Excluir permanentemente' style='color:darkred;' class="fa-solid fa-trash-can"></i></a></td>
     </tr>
 <?php
     }
